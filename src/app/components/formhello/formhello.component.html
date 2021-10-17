@@ -1,0 +1,32 @@
+<div class="container shadow-sm p-3 mb-5 bg-white rounded">
+    <h1>My Say Hello DXC</h1>
+    <form #FormHello="ngForm">
+        <div class="input-group mb-1">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="lblFirstname">First Name*</span>
+            </div>
+            <input class="form-control" type="text" name="txtFirstname" id="txtFirstname" [(ngModel)]="firstname"
+                #txtFirstname="ngModel" required>
+        </div>
+        <div class="alert alert-danger" *ngIf="txtFirstname.invalid && (txtFirstname.dirty || txtFirstname.touched)">
+                <div *ngIf="txtFirstname.errors.required">
+                    Required Field*
+                </div>
+            </div>
+            <div class="input-group mb-1">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="lblLastname">Last Name*</span>
+                </div>
+                <input class="form-control" type="text" name="txtLastname" id="txtLastname" [(ngModel)]="lastname"
+                    #txtLastname="ngModel" required>
+            </div>
+            <div class="alert alert-danger" *ngIf="txtLastname.invalid && (txtLastname.dirty || txtLastname.touched)">
+                    <div *ngIf="txtLastname.errors.required">
+                        Required Field*
+                    </div>
+                </div>
+            <button type="button" class="btn btn-primary mb-3 button-hello" name="btnSayHello" id="btnSayHello" (click)="btnSayHello_Click()">Say Hello</button>
+            <button type="button" class="btn btn-danger mb-3" name="btnReset" id="btnReset" (click)="btnReset_Click()">Reset Field</button>
+    </form>
+    <ngb-alert *ngIf="IsSayHello" class="mb-3" #alert type="success" (close)="alert_Close()">Hello {{firstname}} {{lastname}}</ngb-alert>
+</div>
